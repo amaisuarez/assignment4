@@ -1,0 +1,5 @@
+# python3 scripts/diag_kernel_1x1.py  (run 2026-11-24 after run_20261124-095140, same laptop, AC power)
+# kernel time per multiplication inside the BlockTask, 1 member x 1 thread, n = 2048 (seconds; warm-ups first)
+default kernel per multiplication (warm-ups first): [8.11, 7.43, 7.59, 7.02]
+default_W4 kernel per multiplication (warm-ups first): [7.55, 7.56, 7.2, 6.96, 7.85, 7.02, 7.67]
+xmx4g kernel per multiplication (warm-ups first): [7.5, 7.46, 7.86, 7.23]

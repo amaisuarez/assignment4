@@ -1,0 +1,2 @@
+nov 24, 2026 10:00:54 A. M. com.hazelcast.internal.networking.nio.NioChannelOptions
+ADVERTENCIA: The configured tcp receive buffer size conflicts with the value actually being used by the socket and can lead to sub-optimal performance. Configured 131072 bytes, actual 392384 bytes. On Linux look for kernel parameters 'net.ipv4.tcp_rmem' and 'net.core.rmem_max'.This warning will only be shown once.

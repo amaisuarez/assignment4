@@ -1,0 +1,141 @@
+1. Known answers (local methods)
+  ok    identity x M: seq p=1
+  ok    identity x M: static p=2
+  ok    identity x M: static p=4
+  ok    M x identity: seq p=1
+  ok    M x identity: static p=2
+  ok    M x identity: static p=4
+  ok    zero x M: seq p=1
+  ok    zero x M: static p=2
+  ok    zero x M: static p=4
+  ok    2x2 by hand: seq p=1
+  ok    2x2 by hand: static p=2
+  ok    2x2 by hand: static p=4
+2. Sequential baseline vs NumPy (error bound)
+  ok    n=  1 seq vs NumPy: max err 0.00e+00, max allowed 3.34e-17
+  ok    n=  3 seq vs NumPy: max err 1.11e-16, max allowed 8.92e-16
+  ok    n=  5 seq vs NumPy: max err 2.22e-16, max allowed 3.00e-15
+  ok    n=  7 seq vs NumPy: max err 6.66e-16, max allowed 6.25e-15
+  ok    n= 16 seq vs NumPy: max err 1.33e-15, max allowed 2.28e-14
+  ok    n= 37 seq vs NumPy: max err 1.33e-15, max allowed 1.01e-13
+  ok    n= 64 seq vs NumPy: max err 3.55e-15, max allowed 3.11e-13
+  ok    n=131 seq vs NumPy: max err 1.42e-14, max allowed 1.26e-12
+1, 3-5. Distributed (Hazelcast, members on this machine)
+  -- cluster m=1 members x t=1 threads (1 blocks)
+  ok    identity x M: m=1 t=1
+  ok    M x identity: m=1 t=1
+  ok    zero x M: m=1 t=1
+  ok    2x2 by hand: m=1 t=1
+  ok    n=  1 m=1 t=1 == seq (bitwise)
+  ok    n=  1 m=1 t=1: 3 multiplications, checksums all equal to seq
+  ok    n=  1 m=1 t=1: A local in all tasks, B fetched once per member, remote bytes = 8n(n - own panel rows)
+  ok    n=  3 m=1 t=1 == seq (bitwise)
+  ok    n=  3 m=1 t=1: 3 multiplications, checksums all equal to seq
+  ok    n=  3 m=1 t=1: A local in all tasks, B fetched once per member, remote bytes = 8n(n - own panel rows)
+  ok    n=  5 m=1 t=1 == seq (bitwise)
+  ok    n=  5 m=1 t=1: 3 multiplications, checksums all equal to seq
+  ok    n=  5 m=1 t=1: A local in all tasks, B fetched once per member, remote bytes = 8n(n - own panel rows)
+  ok    n=  7 m=1 t=1 == seq (bitwise)
+  ok    n=  7 m=1 t=1: 3 multiplications, checksums all equal to seq
+  ok    n=  7 m=1 t=1: A local in all tasks, B fetched once per member, remote bytes = 8n(n - own panel rows)
+  ok    n= 16 m=1 t=1 == seq (bitwise)
+  ok    n= 16 m=1 t=1: 3 multiplications, checksums all equal to seq
+  ok    n= 16 m=1 t=1: A local in all tasks, B fetched once per member, remote bytes = 8n(n - own panel rows)
+  ok    n= 37 m=1 t=1 == seq (bitwise)
+  ok    n= 37 m=1 t=1: 3 multiplications, checksums all equal to seq
+  ok    n= 37 m=1 t=1: A local in all tasks, B fetched once per member, remote bytes = 8n(n - own panel rows)
+  ok    n= 64 m=1 t=1 == seq (bitwise)
+  ok    n= 64 m=1 t=1: 3 multiplications, checksums all equal to seq
+  ok    n= 64 m=1 t=1: A local in all tasks, B fetched once per member, remote bytes = 8n(n - own panel rows)
+  ok    n=131 m=1 t=1 == seq (bitwise)
+  ok    n=131 m=1 t=1: 3 multiplications, checksums all equal to seq
+  ok    n=131 m=1 t=1: A local in all tasks, B fetched once per member, remote bytes = 8n(n - own panel rows)
+  -- cluster m=2 members x t=1 threads (2 blocks)
+  ok    identity x M: m=2 t=1
+  ok    M x identity: m=2 t=1
+  ok    zero x M: m=2 t=1
+  ok    2x2 by hand: m=2 t=1
+  ok    n=  1 m=2 t=1 == seq (bitwise) [n < blocks: empty blocks]
+  ok    n=  1 m=2 t=1: 3 multiplications, checksums all equal to seq
+  ok    n=  3 m=2 t=1 == seq (bitwise)
+  ok    n=  3 m=2 t=1: 3 multiplications, checksums all equal to seq
+  ok    n=  3 m=2 t=1: A local in all tasks, B fetched once per member, remote bytes = 8n(n - own panel rows)
+  ok    n=  5 m=2 t=1 == seq (bitwise)
+  ok    n=  5 m=2 t=1: 3 multiplications, checksums all equal to seq
+  ok    n=  5 m=2 t=1: A local in all tasks, B fetched once per member, remote bytes = 8n(n - own panel rows)
+  ok    n=  7 m=2 t=1 == seq (bitwise)
+  ok    n=  7 m=2 t=1: 3 multiplications, checksums all equal to seq
+  ok    n=  7 m=2 t=1: A local in all tasks, B fetched once per member, remote bytes = 8n(n - own panel rows)
+  ok    n= 16 m=2 t=1 == seq (bitwise)
+  ok    n= 16 m=2 t=1: 3 multiplications, checksums all equal to seq
+  ok    n= 16 m=2 t=1: A local in all tasks, B fetched once per member, remote bytes = 8n(n - own panel rows)
+  ok    n= 37 m=2 t=1 == seq (bitwise)
+  ok    n= 37 m=2 t=1: 3 multiplications, checksums all equal to seq
+  ok    n= 37 m=2 t=1: A local in all tasks, B fetched once per member, remote bytes = 8n(n - own panel rows)
+  ok    n= 64 m=2 t=1 == seq (bitwise)
+  ok    n= 64 m=2 t=1: 3 multiplications, checksums all equal to seq
+  ok    n= 64 m=2 t=1: A local in all tasks, B fetched once per member, remote bytes = 8n(n - own panel rows)
+  ok    n=131 m=2 t=1 == seq (bitwise)
+  ok    n=131 m=2 t=1: 3 multiplications, checksums all equal to seq
+  ok    n=131 m=2 t=1: A local in all tasks, B fetched once per member, remote bytes = 8n(n - own panel rows)
+  -- cluster m=2 members x t=2 threads (4 blocks)
+  ok    identity x M: m=2 t=2
+  ok    M x identity: m=2 t=2
+  ok    zero x M: m=2 t=2
+  ok    2x2 by hand: m=2 t=2
+  ok    n=  1 m=2 t=2 == seq (bitwise) [n < blocks: empty blocks]
+  ok    n=  1 m=2 t=2: 3 multiplications, checksums all equal to seq
+  ok    n=  3 m=2 t=2 == seq (bitwise) [n < blocks: empty blocks]
+  ok    n=  3 m=2 t=2: 3 multiplications, checksums all equal to seq
+  ok    n=  3 m=2 t=2: A local in all tasks, B fetched once per member, remote bytes = 8n(n - own panel rows)
+  ok    n=  5 m=2 t=2 == seq (bitwise)
+  ok    n=  5 m=2 t=2: 3 multiplications, checksums all equal to seq
+  ok    n=  5 m=2 t=2: A local in all tasks, B fetched once per member, remote bytes = 8n(n - own panel rows)
+  ok    n=  7 m=2 t=2 == seq (bitwise)
+  ok    n=  7 m=2 t=2: 3 multiplications, checksums all equal to seq
+  ok    n=  7 m=2 t=2: A local in all tasks, B fetched once per member, remote bytes = 8n(n - own panel rows)
+  ok    n= 16 m=2 t=2 == seq (bitwise)
+  ok    n= 16 m=2 t=2: 3 multiplications, checksums all equal to seq
+  ok    n= 16 m=2 t=2: A local in all tasks, B fetched once per member, remote bytes = 8n(n - own panel rows)
+  ok    n= 37 m=2 t=2 == seq (bitwise)
+  ok    n= 37 m=2 t=2: 3 multiplications, checksums all equal to seq
+  ok    n= 37 m=2 t=2: A local in all tasks, B fetched once per member, remote bytes = 8n(n - own panel rows)
+  ok    n= 64 m=2 t=2 == seq (bitwise)
+  ok    n= 64 m=2 t=2: 3 multiplications, checksums all equal to seq
+  ok    n= 64 m=2 t=2: A local in all tasks, B fetched once per member, remote bytes = 8n(n - own panel rows)
+  ok    n=131 m=2 t=2 == seq (bitwise)
+  ok    n=131 m=2 t=2: 3 multiplications, checksums all equal to seq
+  ok    n=131 m=2 t=2: A local in all tasks, B fetched once per member, remote bytes = 8n(n - own panel rows)
+  -- cluster m=3 members x t=1 threads (3 blocks)
+  ok    identity x M: m=3 t=1
+  ok    M x identity: m=3 t=1
+  ok    zero x M: m=3 t=1
+  ok    2x2 by hand: m=3 t=1
+  ok    n=  1 m=3 t=1 == seq (bitwise) [n < blocks: empty blocks]
+  ok    n=  1 m=3 t=1: 3 multiplications, checksums all equal to seq
+  ok    n=  3 m=3 t=1 == seq (bitwise)
+  ok    n=  3 m=3 t=1: 3 multiplications, checksums all equal to seq
+  ok    n=  3 m=3 t=1: A local in all tasks, B fetched once per member, remote bytes = 8n(n - own panel rows)
+  ok    n=  5 m=3 t=1 == seq (bitwise)
+  ok    n=  5 m=3 t=1: 3 multiplications, checksums all equal to seq
+  ok    n=  5 m=3 t=1: A local in all tasks, B fetched once per member, remote bytes = 8n(n - own panel rows)
+  ok    n=  7 m=3 t=1 == seq (bitwise)
+  ok    n=  7 m=3 t=1: 3 multiplications, checksums all equal to seq
+  ok    n=  7 m=3 t=1: A local in all tasks, B fetched once per member, remote bytes = 8n(n - own panel rows)
+  ok    n= 16 m=3 t=1 == seq (bitwise)
+  ok    n= 16 m=3 t=1: 3 multiplications, checksums all equal to seq
+  ok    n= 16 m=3 t=1: A local in all tasks, B fetched once per member, remote bytes = 8n(n - own panel rows)
+  ok    n= 37 m=3 t=1 == seq (bitwise)
+  ok    n= 37 m=3 t=1: 3 multiplications, checksums all equal to seq
+  ok    n= 37 m=3 t=1: A local in all tasks, B fetched once per member, remote bytes = 8n(n - own panel rows)
+  ok    n= 64 m=3 t=1 == seq (bitwise)
+  ok    n= 64 m=3 t=1: 3 multiplications, checksums all equal to seq
+  ok    n= 64 m=3 t=1: A local in all tasks, B fetched once per member, remote bytes = 8n(n - own panel rows)
+  ok    n=131 m=3 t=1 == seq (bitwise)
+  ok    n=131 m=3 t=1: 3 multiplications, checksums all equal to seq
+  ok    n=131 m=3 t=1: A local in all tasks, B fetched once per member, remote bytes = 8n(n - own panel rows)
+6. Input generators
+  ok    dense n=16: byte-identical to the Assignment 1-3 inputs (SHA-256)
+  ok    dense n=64: byte-identical to the Assignment 1-3 inputs (SHA-256)
+
+ALL TESTS PASSED

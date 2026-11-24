@@ -1,0 +1,122 @@
+{
+  "description": "Assignment 4 study (used for the report)",
+  "seed": 20262027,
+  "java_opts": [
+    "-XX:+UseSerialGC",
+    "-Xms256m",
+    "-Xmx4g"
+  ],
+  "hz_jvm_opts": [
+    "--add-modules",
+    "java.se",
+    "--add-exports",
+    "java.base/jdk.internal.ref=ALL-UNNAMED",
+    "--add-opens",
+    "java.base/java.lang=ALL-UNNAMED",
+    "--add-opens",
+    "java.base/sun.nio.ch=ALL-UNNAMED",
+    "--add-opens",
+    "java.management/sun.management=ALL-UNNAMED",
+    "--add-opens",
+    "jdk.management/com.sun.management.internal=ALL-UNNAMED"
+  ],
+  "member_java_opts": [
+    "-XX:+UseSerialGC",
+    "-Xms128m",
+    "-Xmx1g"
+  ],
+  "driver_java_opts": [
+    "-XX:+UseSerialGC",
+    "-Xms256m",
+    "-Xmx2g"
+  ],
+  "host": "127.0.0.1",
+  "base_port": 5701,
+  "cluster_start_timeout_s": 90,
+  "port_release_pause_s": 1.0,
+  "repetitions": 5,
+  "warmup_rules": [
+    {
+      "max_n": 1024,
+      "warmups": 2
+    },
+    {
+      "max_n": 1000000,
+      "warmups": 1
+    }
+  ],
+  "batch_target_ms": 100,
+  "per_repetition_budget_s": 120,
+  "process_startup_allowance_s": 90,
+  "memory_budget_bytes": 4000000000,
+  "local": {
+    "sizes": [
+      512,
+      1024,
+      2048,
+      3072
+    ],
+    "methods": [
+      [
+        "seq",
+        1
+      ],
+      [
+        "static",
+        2
+      ],
+      [
+        "static",
+        4
+      ]
+    ]
+  },
+  "strong": {
+    "sizes": [
+      512,
+      1024,
+      2048,
+      3072
+    ],
+    "configs": [
+      [
+        1,
+        1
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        3,
+        1
+      ],
+      [
+        4,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        1,
+        4
+      ]
+    ]
+  },
+  "weak": {
+    "base_n": 1024,
+    "workers": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "include_seq": true
+  }
+}
