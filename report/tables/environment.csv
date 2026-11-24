@@ -1,0 +1,13 @@
+item,value
+Machine,"1 physical machine (all members and the driver on it, loopback 127.0.0.1)"
+CPU,Intel(R) Core(TM) i5-5350U CPU @ 1.80GHz
+Physical cores / logical processors,2 / 4 (Hyper-Threading)
+"Caches (L1d / L2 per core, L3 shared)",32 KiB / 256 KiB / 3 MiB
+RAM,8 GiB
+OS,macOS-10.16-x86_64-i386-64bit-Mach-O (Darwin 21.6.0)
+Java,"openjdk version ""21.0.6"" 2025-01-21"
+Hazelcast,"5.5.0 (open-source, lib/hazelcast-5.5.0.jar, SHA-256 cf560b40b988526e780e4fae12cb6fe01c5158bb9e00839882857f32b544a19e)"
+Member JVM,-XX:+UseSerialGC -Xms128m -Xmx1g
+Driver JVM (client),-XX:+UseSerialGC -Xms256m -Xmx2g
+Local reference JVM,-XX:+UseSerialGC -Xms256m -Xmx4g
+Power,Now drawing from 'AC Power'
