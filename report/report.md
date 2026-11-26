@@ -92,7 +92,7 @@ k = 0…n−1, so all results must be bit-identical; any difference reveals a bu
 
 ## 3.1 Implementations
 
-All code is mine, in Java 21; the only library is Hazelcast 5.5.0 (open source).
+All code is written in Java 21; the only library is Hazelcast 5.5.0 (open source).
 
 | Method | Description | Processes |
 |---|---|---|
@@ -321,9 +321,9 @@ B copy cost 3–15 % of the time, and the compute phase includes storing C. But 
 it is in the kernel itself: inside the member, the same `ikjRows` kernel took
 8.69 s at n = 2048 (5 measured values 7.94–9.07 s) against 6.91 s for `seq`. To check
 this I ran 1×1 at n = 2048 again (`scripts/diag_kernel_1x1.py`,
-`results/diag_kernel_1x1.txt`): the kernel took 6.96–7.86 s with the default
-settings, the same with 4 warm-ups, and the same with a 4 GB heap. So more warm-up or
-heap does not change it; the kernel inside a member is 0–14 % slower than `seq` in the
+`results/diag_kernel_1x1.txt`): the measured multiplications took 7.02–7.86 s with the
+default settings, with 4 warm-ups and with a 4 GB heap alike. So more warm-up or
+heap does not change it; the kernel inside a member is 2–14 % slower than `seq` in the
 re-run and up to 31 % slower in the study, which suggests interference from the other
 threads of the member JVM (Hazelcast's I/O and partition threads) and from the driver
 process on the same 2 cores, plus run-to-run variation (IQR 11.7 % for this
